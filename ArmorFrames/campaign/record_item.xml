@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!-- 
+  Please see the license.html file included with this distribution for 
+  attribution and copyright information.
+-->
+
+<root>
+    <windowclass name="item_main" merge="join">
+        <script file="campaign/scripts/item_main.lua" />
+        <sheetdata>
+            <label_column name="durability_label" insertbefore="cost_label">
+                <static textres="item_label_durability" />
+            </label_column>
+            <button_stringcycler name="durability" insertbefore="cost_label">
+                <script file="campaign/scripts/column_stringcycler.lua" />
+                <anchored width="40">
+                    <top parent="columnanchor" anchor="bottom" relation="relative" offset="7" />
+                    <left offset="97" />
+                </anchored>
+                <parameters>
+                    <labelsres>item_durability_d12|item_durability_d10|item_durability_d8|item_durability_d6|item_durability_d4</labelsres>
+                    <values>D12|D10|D8|D6|D4</values>
+                    <defaultlabelres>dash</defaultlabelres>
+                </parameters>
+            </button_stringcycler>
+            <label name="maxdurability_label" insertbefore="cost_label">
+                <anchored>
+                    <top parent="durability_label"/>
+                    <left parent="durability" anchor="right" relation="relative" offset="20" />
+			</anchored>
+                <static textres="item_label_maxdurability" />
+            </label>
+            <button_stringcycler name="maxdurability" insertbefore="cost_label">
+                <script file="campaign/scripts/column_stringcycler.lua" />
+                <script>
+                    function onValueChanged()
+                        window.durability.setStringValue(getStringValue());
+                    end
+                </script>
+                <anchored width="40">
+                    <top parent="durability" />
+                    <left parent="maxdurability_label" offset="40" />
+                </anchored>
+                <parameters>
+                    <labelsres>item_durability_d12|item_durability_d10|item_durability_d8|item_durability_d6|item_durability_d4</labelsres>
+                    <values>D12|D10|D8|D6|D4</values>
+                    <defaultlabelres>dash</defaultlabelres>
+                </parameters>
+            </button_stringcycler>
+
+            <label_column name="frame_label" insertbefore="strength_label">
+                <static textres="item_label_frame" />
+            </label_column>
+            <string_columnh name="frame" insertbefore="strength_label">
+                <delaykeyupdate />
+                <nohide />
+            </string_columnh>
+
+            <label_column name="dexbonus_label" merge="delete" />
+			<string_columnh name="dexbonus" merge="delete" />
+            <label_column name="stealth_label" merge="delete" />
+            <string_columnh name="stealth" merge="delete"/>
+        </sheetdata>
+    </windowclass>
+</root>

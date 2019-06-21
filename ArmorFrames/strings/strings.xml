@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!-- 
+  Please see the license.html file included with this distribution for 
+  attribution and copyright information.
+-->
+
+<root>
+    <string name="item_label_frame">Frame</string>
+    <string name="item_frame_jack">Jack</string>
+    <string name="item_frame_hauberk">Hauberk</string>
+    <string name="item_frame_cuirass">Cuirass</string>
+
+    <string name="item_label_durability">Durability</string>
+    <string name="item_label_maxdurability">Max</string>
+    <string name="item_durability_d12">D12</string>
+    <string name="item_durability_d10">D10</string>
+    <string name="item_durability_d8">D8</string>
+    <string name="item_durability_d6">D6</string>
+    <string name="item_durability_d4">D4</string>
+
+    <string name="item_grouped_label_frame">Frame</string>
+    <string name="item_grouped_label_properties">Properties</string>
+    <string name="item_grouped_label_durability">Durability</string>
+</root>

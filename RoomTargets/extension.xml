@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<root version="3.3" release="1.0">
+	<announcement text="Loaded the RoomTargets extension." font="emotefont" />
+	<properties>
+		<name>Room Targets</name>
+		<version>1.0</version>
+		<author>George Taray</author>
+		<description>Modifies base 5e rules to use the Room Target from Index Card RPG.</description>
+	</properties>
+	<base>
+		<includefile source="gameelements.xml" />
+
+		<!-- This file is our main Lua file. You can name it what you want, but you must use xml restrictions in order to do that.-->
+		<script name="RoomTarget" file="scripts/roomTargets.lua" />
+
+		<!-- Desktop -->
+		<includefile source="desktop/desktop_classes.xml" />
+		<includefile source="desktop/desktop_templates.xml" />
+
+		<!-- Graphics -->
+		<includefile source="graphics/graphics_icons.xml"/>
+
+		<!-- Scripts -->
+		<script name="CombatManager2" file="scripts/manager_combat2.lua" />
+	</base>
+</root>

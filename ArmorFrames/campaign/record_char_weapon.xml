@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!-- 
+  Please see the license.html file included with this distribution for 
+  attribution and copyright information.
+-->
+
+<root>
+    <windowclass name="char_weapon" merge="join">
+        <script file="campaign/scripts/char_weapon.lua" />
+        <!-- <script>
+            node = nil;
+
+			function onInit()
+				super.onInit();
+                local wNode = getDatabaseNode();
+                local sClass, sRecord = DB.getValue(getDatabaseNode(), "shortcut", "", "");
+
+                node = DB.findNode(DB.getPath(sRecord));
+
+				DB.addHandler(DB.getPath(node, "durability"), "onUpdate", update);
+				update();
+			end
+
+			function onClose()
+				DB.removeHandler(DB.getPath(node, "durability"), "onUpdate", update);
+			end
+
+			function update()		
+                local cDur = DB.getValue(DB.getPath(node, "durability"), "");
+
+				if cDur == "D12" then
+					durability_counter.setIcon("d12icon");
+				elseif cDur == "D10" then
+					durability_counter.setIcon("d10icon");
+				elseif cDur == "D8" then
+					durability_counter.setIcon("d8icon");
+				elseif cDur == "D6" then
+					durability_counter.setIcon("d6icon");
+				elseif cDur == "D4" then
+					durability_counter.setIcon("d4icon");
+				else
+					durability_counter.setIcon();
+				end
+			end
+		</script> -->
+        <sheetdata>
+            <genericcontrol name="durability_counter" insertbefore="damageview">
+				<anchored to="rightanchor" height="32" width="30">
+					<top offset="2"/>
+					<right anchor="left" relation="relative" offset="-5"/>
+				</anchored>
+				<frame name="fielddark" offset="3,2,3,2" />
+				<script>
+                    function onInit()
+                        setHoverCursor("hand");
+                        ActionsManager.registerResultHandler("durability", onDurabilityResult);
+                    end
+
+                    function onDoubleClick(x,y)
+                        return onDurabilityRoll();
+                    end			
+
+                    function onDragStart(button, x, y, draginfo)
+                        return onDurabilityRoll(draginfo);
+                    end
+
+                    function onDurabilityRoll(draginfo)
+                        local nodeItem = window.invNode;
+                        local nodeChar = nodeItem.getChild("...");
+                        local rActor = ActorManager.getActor("pc", nodeChar);
+                        local sDur = DB.getValue(window.invNode, "durability", "")
+                        rRoll = {};
+
+                        if sDur == "" then
+                            return false;
+                        end
+                        
+                        sDur = sDur:lower();
+                        rRoll = { 
+                            sType = "durability", 
+                            sDesc = "Durability roll on " .. DB.getValue(nodeItem, "name", ""),
+                            aDice = { sDur },
+                            nMod = 0,
+                            sItem = DB.getPath(nodeItem)
+                        };
+
+                        ActionsManager.performAction(draginfo, rActor, rRoll);
+                        return true;
+                    end
+
+                    function onDurabilityResult(rSource, rTarget, rRoll)
+                        local bSuccess = false;
+                        for _,v in ipairs(rRoll.aDice) do
+                            if v.result > 2 then
+                                bSuccess = true;
+                            end
+                        end
+
+                        local msg = ActionsManager.createActionMessage(rSource, rRoll);
+                        msg.type = "dice";
+
+                        local item = DB.findNode(rRoll.sItem);
+                        if bSuccess then
+                            msg.text = msg.text .. " [SUCCESS]";
+                        else
+                            msg.text = msg.text .. " [FAILURE]";
+                            DB.setValue(item, "durability", "string", decrementDurability(item));
+                        end
+                        Comm.deliverChatMessage(msg);	
+                    end
+
+                    function decrementDurability(item)
+                        local sDur = DB.getValue(item, "durability", "");
+
+                        if sDur == "D12" then
+                            return "D10";
+                        elseif sDur == "D10" then
+                            return "D8";
+                        elseif sDur == "D8" then
+                            return "D6";
+                        elseif sDur == "D6" then
+                            return "D4";
+                        else
+                            return ""
+                        end
+                    end
+                </script>
+			</genericcontrol>
+
+            <label name="label_ammo" merge="delete" />
+            <basicnumber name="maxammo" merge="delete" />
+            <state_charammocounter name="ammocounter" merge="delete" />
+        </sheetdata>
+    </windowclass>
+</root>

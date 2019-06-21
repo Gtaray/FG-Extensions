@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!-- 
+  Please see the license.html file included with this distribution for 
+  attribution and copyright information.
+-->
+
+<root>
+	<template name="column_stringcycler">
+		<button_stringcycler>
+			<script file="campaign/scripts/column_stringcycler.lua" />
+			<anchored height="20" />
+		</button_stringcycler>
+	</template>
+
+    <!-- Replaces the Character Inventory list on character sheet-->
+    <template name="list_charinv" mergerule="replace">
+		<windowlist>
+			<child></child>
+			<child><backcolor>1A40301E</backcolor></child>
+			<datasource>.inventorylist</datasource>
+			<class>char_invitem</class>
+			<allowdelete />
+			<script file="campaign/scripts/char_invlist.lua" />
+		</windowlist>
+	</template>
+
+    <template name="number_chartotalac" mergerule="replace">
+		<number_chartotal>
+			<description textres="armorclass" />
+			<font>reference-b-large</font>
+			<modifiersize>mini</modifiersize>
+			<modifierfield>defenses.ac.temporary</modifierfield>
+			<source><name>defenses.ac.armor</name><op>+</op></source>
+			<source><name>defenses.ac.shield</name><op>+</op></source>
+			<source><name>defenses.ac.misc</name><op>+</op></source>
+			<source><string /><name>defenses.ac.frame</name></source>
+			<source><string /><name>defenses.ac.stat2</name></source>
+			<script>
+				function onInit()
+					super.onInit();
+					DB.addHandler(DB.getPath(window.getDatabaseNode(), "abilities"), "onChildUpdate", onSourceUpdate);
+				end
+				
+				function onClose()
+					DB.removeHandler(DB.getPath(window.getDatabaseNode(), "abilities"), "onChildUpdate", onSourceUpdate);
+				end
+				
+				function onSourceUpdate()
+					local rActor = ActorManager.getActor("pc", window.getDatabaseNode());
+					local nDexBonus = ActorManager2.getAbilityBonus(rActor, "dexterity");
+                    local nStrBonus = ActorManager2.getAbilityBonus(rActor, "strength");
+
+                    local sFrame = sources["defenses.ac.frame"].getValue();
+                    if sFrame == "maxStr" then
+                        nDexBonus = math.min(nDexBonus, nStrBonus);
+                    elseif sFrame == "noDex" then
+                        nDexBonus = 0;
+                    end
+					
+					local nStatBonus2 = 0;
+					local sStat2 = sources["defenses.ac.stat2"].getValue();
+					if sStat2 ~= "" then
+						nStatBonus2 = ActorManager2.getAbilityBonus(rActor, sStat2);
+					end
+
+					setValue(10 + calculateSources() + nDexBonus + nStatBonus2);
+				end
+			</script>
+		</number_chartotal>
+	</template>
+</root>

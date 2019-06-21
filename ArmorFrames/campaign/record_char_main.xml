@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!-- 
+  Please see the license.html file included with this distribution for 
+  attribution and copyright information.
+-->
+
+<root>
+    <windowclass name="charsheet_combatcalc" merge="join">
+        <sheetdata>
+            <button_stringcycler name="acdexbonus" merge="delete" />
+            <label_fieldtop name="label_acdexbonus" merge="delete"/>
+
+            <button_stringcycler name="acframe" insertbefore="label_armorplus4">
+				<anchored to="label_armorplus3" position="righthigh" offset="5,0" width="50" height="20" />
+				<source><name>defenses.ac.frame</name></source>
+				<parameters>
+					<defaultlabelres>item_frame_jack</defaultlabelres>
+					<labelsres>item_frame_hauberk|item_frame_cuirass</labelsres>
+					<values>maxStr|noDex</values>
+				</parameters>
+			</button_stringcycler>
+            <label_fieldtop name="label_acframe" insertbefore="label_armorplus4">
+                <anchored to="acframe" />
+				<static textres="item_label_frame" />
+            </label_fieldtop>
+
+            <label name="label_armorplus4" merge="join">
+				<anchored to="acframe" position="righthigh" offset="5,0" width="10" />
+			</label>
+
+            <label name="label_acdisstealth" merge="join">
+				<anchored to="acframe" position="belowleft" offset="0,5" />
+			</label>
+        </sheetdata>
+    </windowclass>
+</root>

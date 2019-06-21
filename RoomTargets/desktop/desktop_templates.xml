@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!-- 
+  Please see the license.html file included with this distribution for 
+  attribution and copyright information.
+-->
+
+<root>
+    <windowclass name="room_target">
+      <sheetdata>
+        <genericcontrol name="room_target">
+          <bounds>0,0,-1,-1</bounds>
+          <script file="desktop/scripts/room_target.lua" />
+        </genericcontrol>
+      </sheetdata>
+    </windowclass>
+</root>

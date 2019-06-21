@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!-- 
+  Please see the license.html file included with this distribution for 
+  attribution and copyright information.
+-->
+
+<root>
+	<!--
+		The room target that should be displayed to the users at all time. This is intended to be used
+		within a panel on the desktop.
+	-->
+	<panel name="room_target" modes="all" insertbefore="modifierstack">
+		<class>room_target</class>
+		<bounds>20,-100,70,60</bounds>
+		<locked />
+	</panel>
+
+	<panel name="modifierstack" modes="host,client" merge="join">
+		<bounds>90,-100,64,57</bounds>
+	</panel>
+</root>

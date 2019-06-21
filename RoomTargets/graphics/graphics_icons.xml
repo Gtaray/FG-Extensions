@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!-- 
+  Please see the license.html file included with this distribution for 
+  attribution and copyright information.
+-->
+
+<root>
+    <!-- Room Targets -->
+	<icon name="room_target_9" file="graphics/targets/target 9.png" />
+	<icon name="room_target_10" file="graphics/targets/target 10.png" />
+	<icon name="room_target_11" file="graphics/targets/target 11.png" />
+	<icon name="room_target_12" file="graphics/targets/target 12.png" />
+	<icon name="room_target_13" file="graphics/targets/target 13.png" />
+	<icon name="room_target_14" file="graphics/targets/target 14.png" />
+	<icon name="room_target_15" file="graphics/targets/target 15.png" />
+	<icon name="room_target_16" file="graphics/targets/target 16.png" />
+	<icon name="room_target_17" file="graphics/targets/target 17.png" />
+	<icon name="room_target_18" file="graphics/targets/target 18.png" />
+	<icon name="room_target_19" file="graphics/targets/target 19.png" />
+	<icon name="room_target_20" file="graphics/targets/target 20.png" />
+	<icon name="room_target_21" file="graphics/targets/target 21.png" />
+	<icon name="room_target_22" file="graphics/targets/target 22.png" />
+	<icon name="room_target_23" file="graphics/targets/target 23.png" />
+	<icon name="room_target_24" file="graphics/targets/target 24.png" />
+	<icon name="room_target_25" file="graphics/targets/target 25.png" />
+	<icon name="room_target_26" file="graphics/targets/target 26.png" />
+	<icon name="room_target_27" file="graphics/targets/target 27.png" />
+	<icon name="room_target_28" file="graphics/targets/target 28.png" />
+	<icon name="room_target_29" file="graphics/targets/target 29.png" />
+	<icon name="room_target_30" file="graphics/targets/target 30.png" />
+  <icon name="room_target_31" file="graphics/targets/target 31.png" />
+	<icon name="room_target_32" file="graphics/targets/target 32.png" />
+	<icon name="room_target_33" file="graphics/targets/target 33.png" />
+	<icon name="room_target_34" file="graphics/targets/target 34.png" />
+	<icon name="room_target_35" file="graphics/targets/target 35.png" />
+</root>
